@@ -1,7 +1,9 @@
 require "google/cloud/translate/v2"
 require "google/cloud/vision"
 require "open-uri"
-require 'dotenv/load'
+if ['development', 'test'].include? ENV['APP_ENV']
+  require 'dotenv/load'
+end
 
 
 require 'sinatra'
