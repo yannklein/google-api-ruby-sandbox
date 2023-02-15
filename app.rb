@@ -23,9 +23,9 @@ end
 
 get '/translate' do
   translate = Google::Cloud::Translate::V2.new
-  to_translate = params["q"] || "Hello world!"
+  sentence = params["q"] || "Hello world!"
   lang = params["lang"] || "la"
-  translation = @translate.translate to_translate, to: lang
+  translation = translate.translate sentence, to: lang
   @translated = translation.text #=> "Salve mundi!"
   erb :translate
 end

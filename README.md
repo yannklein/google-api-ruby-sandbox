@@ -1,34 +1,15 @@
-## ActiveRecord basics boilerplate
+# Google API ruby client examples
+Example code of usage of Google API in ruby (Vision and Translate so far).
+      
+## Setup:
+- Check the code [here](https://github.com/yannklein/google-api-ruby-sandbox)
+- Activate your Google API [here](https://github.com/googleapis/google-cloud-ruby#using-the-client-libraries) and get a JSON file with your creadentials
+- Add the JSON file in a ocr-key.json file in the root folder of your project.
 
-This is a minimalist implementation of ActiveRecord with one `Restaurant` model to live-code a demo for @LeWagon students, part of [Karr examples](https://github.com/lewagon/karr-examples), working with Sinatra.
 
-- clone the repo
-- run `rake db:create` to create your db
-- run your migrations with `rake db:migrate`
+## Example of Google API usage:
+Check the [code](https://github.com/yannklein/google-api-ruby-sandbox) and [main page](#)
+- Vision API for Image text detection ([code](https://github.com/yannklein/google-api-ruby-sandbox/blob/main/app.rb#L18), [example](#))
+- Translate ([code](https://github.com/yannklein/google-api-ruby-sandbox/blob/main/app.rb#L24), [example](#))
 
-Now you can play with the `Restaurant` model:
-
-```bash
-rake console
-```
-
-Here are some commands you can run in the console:
-
-```ruby
-restaurant = Restaurant.new(name: "La Tour d'Argent", address: "15 Quai de la Tournelle, 75005 Paris")
-restaurant.persisted?
-# => false
-restaurant.id
-# => nil
-restaurant.save
-restaurant.id
-# => 1
-```
-
-To launch a Sinatra server just run this and open a web browser at [http://localhost:4567](http://localhost:4567):
-
-```bash
-bundle exec ruby app.rb
-```
-
-Enjoy!
+</div>
