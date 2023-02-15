@@ -1,11 +1,33 @@
+require "google/cloud/translate/v2"
+require "google/cloud/vision"
+require "open-uri"
+require 'dotenv/load'
+
+
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
 require_relative 'config/application'
 
+
 get '/' do
   @hello = 'Hi there!'
   erb :index
+end
+
+get '/vision' do
+  vision = Google::Cloud::Vision.image_annotator
+  @image = vision.text_detection(image: URI.open('http://localhost:4567/referral.jpg')).responses[0].text_annotations[0].description
+  erb :vision
+end
+
+get '/translate' do
+  translate = Google::Cloud::Translate::V2.new
+  to_translate = params["q"] || "Hello world!"
+  lang = params["lang"] || "la"
+  translation = @translate.translate to_translate, to: lang
+  @translated = translation.text #=> "Salve mundi!"
+  erb :translate
 end
 
 # Ruby embedded into views files
